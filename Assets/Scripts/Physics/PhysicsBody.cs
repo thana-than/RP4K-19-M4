@@ -12,12 +12,19 @@ namespace Horror.Physics
         //! Doesn't handle input, just physics
 
         [SerializeField] private CharacterController controller;
-        [SerializeField] float gravity = 1.0f;
         [SerializeField] float drag = 0.1f;
         private Vector3 externalForces;
         private Vector3 velocity;
         private Vector3 moveStep;
         public bool isGrounded => controller.isGrounded;
+
+        [SerializeField] float ascentGravity = 1.0f;
+        [SerializeField] float descentGravity = 1.6f;
+        float gravityMultiplier = 1.0f;
+        public void MultiplyGravity(float multiplier)
+        {
+            gravityMultiplier *= multiplier;
+        }
 
         public void AddForce(Vector3 force, ForceMode mode = ForceMode.Force)
         {
@@ -36,8 +43,8 @@ namespace Horror.Physics
 
         void FixedUpdate()
         {
-            velocity = ApplyGravity(velocity);
             velocity = ApplyForce(velocity);
+            velocity = ApplyGravity(velocity);
             velocity = ApplyCollision(velocity);
 
             moveStep = SetSpeed(moveStep);
@@ -47,7 +54,9 @@ namespace Horror.Physics
 
         Vector3 ApplyGravity(Vector3 velocity)
         {
-            velocity += UnityEngine.Physics.gravity * gravity * Time.fixedDeltaTime;
+            float gravity = velocity.y > 0 ? ascentGravity : descentGravity;
+            velocity += UnityEngine.Physics.gravity * gravity * gravityMultiplier * Time.fixedDeltaTime;
+            gravityMultiplier = 1.0f;
             return velocity;
         }
 

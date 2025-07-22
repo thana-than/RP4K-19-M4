@@ -7,12 +7,23 @@ namespace Horror.Inputs
     {
         [SerializeField] private PhysicsBody physicsBody;
         [SerializeField] private float jumpForce = 5f;
+        [SerializeField] private float jumpHoldGravityMod = 0.6f;
+
+        bool jumpHeld = false;
 
         void Update()
         {
-            if (Input.GetButtonDown("Jump"))
+            jumpHeld = Input.GetButton("Jump");
+        }
+
+        void FixedUpdate()
+        {
+            if (jumpHeld)
             {
                 AttemptJump();
+
+                if (!physicsBody.isGrounded)
+                    physicsBody.MultiplyGravity(jumpHoldGravityMod);
             }
         }
 

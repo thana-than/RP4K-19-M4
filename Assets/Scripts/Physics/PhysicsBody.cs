@@ -1,4 +1,5 @@
 using UnityEngine;
+using Horror.Utilities;
 
 namespace Horror.Physics
 {
@@ -15,6 +16,7 @@ namespace Horror.Physics
         [SerializeField] float drag = 0.1f;
         private Vector3 externalForces;
         private Vector3 velocity;
+        private Vector3 moveStep;
         public bool isGrounded => controller.isGrounded;
 
         public void AddForce(Vector3 force, ForceMode mode = ForceMode.Force)
@@ -23,23 +25,24 @@ namespace Horror.Physics
             {
                 force *= Time.fixedDeltaTime;
             }
-            else
-            {
-                force /= Time.fixedDeltaTime;
-            }
 
             externalForces += force;
         }
 
+        public void Move(Vector3 move)
+        {
+            moveStep += move;
+        }
+
         void FixedUpdate()
         {
-            Vector3 moveStep = Vector3.zero;
             velocity = ApplyGravity(velocity);
             velocity = ApplyForce(velocity);
             velocity = ApplyCollision(velocity);
 
             moveStep = SetSpeed(moveStep);
             controller.Move(moveStep);
+            moveStep = Vector3.zero;
         }
 
         Vector3 ApplyGravity(Vector3 velocity)
@@ -67,10 +70,14 @@ namespace Horror.Physics
         {
             if (controller.isGrounded)
             {
-                velocity.y = 0f;
+                velocity.y = Mathf.Max(-controller.skinWidth, velocity.y);
             }
 
             return velocity;
+        }
+        void OnDrawGizmosSelected()
+        {
+            controller.DrawGroundContactGizmos();
         }
     }
 }

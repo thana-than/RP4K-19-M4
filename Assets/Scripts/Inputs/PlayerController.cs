@@ -20,10 +20,17 @@ namespace Horror.Inputs
 
         Vector3 GetInput()
         {
-            return new Vector3(
+            Vector2 rawInput = new Vector2(
                 Input.GetAxis("Horizontal"),
-                0f,
                 Input.GetAxis("Vertical")
+            );
+
+            Vector2 input = Vector2.ClampMagnitude(rawInput, 1f);
+
+            return new Vector3(
+                input.x,
+                0f,
+                input.y
             );
         }
     }

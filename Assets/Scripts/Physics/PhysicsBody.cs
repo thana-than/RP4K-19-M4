@@ -1,4 +1,5 @@
 using UnityEngine;
+using Horror.Utilities;
 
 namespace Horror.Physics
 {
@@ -74,6 +75,11 @@ namespace Horror.Physics
             }
 
             return velocity;
+        }
+
+        void OnDrawGizmosSelected()
+        {
+            controller.DrawGroundContactGizmos();
         }
     }
 }

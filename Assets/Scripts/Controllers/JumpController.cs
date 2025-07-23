@@ -1,16 +1,18 @@
 using Horror.Physics;
 using UnityEngine;
+using Horror.Inputs;
 
-namespace Horror.Inputs
+namespace Horror.Controllers
 {
     public class JumpController : MonoBehaviour
     {
         [SerializeField] private PhysicsBody physicsBody;
+        [SerializeField] private InputBrain inputBrain;
         [SerializeField] private float jumpForce = 5f;
 
-        void Update()
+        void FixedUpdate()
         {
-            if (Input.GetButtonDown("Jump"))
+            if (inputBrain.JumpHeld)
             {
                 AttemptJump();
             }

@@ -1,10 +1,11 @@
 using UnityEngine;
+using Horror.Physics;
 
 namespace Horror.Inputs
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private CharacterController controller;
+        [SerializeField] private PhysicsBody physicsBody;
         [SerializeField] private float speed = 5f;
         private Vector3 inputBuffer;
 
@@ -15,7 +16,7 @@ namespace Horror.Inputs
 
         void FixedUpdate()
         {
-            controller.Move(inputBuffer * Time.fixedDeltaTime * speed);
+            physicsBody.Move(inputBuffer * Time.fixedDeltaTime * speed);
         }
 
         Vector3 GetInput()

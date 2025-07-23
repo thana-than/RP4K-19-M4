@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2880ba358a6887b4ea848a7dcc7339cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 780133189}
+  physicsBody: {fileID: 780133195}
   speed: 5
 --- !u!114 &780133195
 MonoBehaviour:

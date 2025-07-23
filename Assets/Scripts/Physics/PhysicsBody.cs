@@ -14,6 +14,7 @@ namespace Horror.Physics
         [SerializeField] float gravity = 1.0f;
         [SerializeField] float drag = 0.1f;
         private Vector3 externalForces;
+        private Vector3 moveBuffer;
         private Vector3 velocity;
         public bool isGrounded => controller.isGrounded;
 
@@ -23,23 +24,25 @@ namespace Horror.Physics
             {
                 force *= Time.fixedDeltaTime;
             }
-            else
-            {
-                force /= Time.fixedDeltaTime;
-            }
 
             externalForces += force;
         }
 
+        public void Move(Vector3 moveStep)
+        {
+            moveBuffer += moveStep;
+        }
+
         void FixedUpdate()
         {
-            Vector3 moveStep = Vector3.zero;
             velocity = ApplyGravity(velocity);
             velocity = ApplyForce(velocity);
             velocity = ApplyCollision(velocity);
 
-            moveStep = SetSpeed(moveStep);
-            controller.Move(moveStep);
+            moveBuffer = SetSpeed(moveBuffer);
+            controller.Move(moveBuffer);
+
+            moveBuffer = Vector3.zero;
         }
 
         Vector3 ApplyGravity(Vector3 velocity)
@@ -67,7 +70,7 @@ namespace Horror.Physics
         {
             if (controller.isGrounded)
             {
-                velocity.y = 0f;
+                velocity.y = Mathf.Max(-controller.skinWidth, velocity.y);
             }
 
             return velocity;

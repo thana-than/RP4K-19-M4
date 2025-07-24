@@ -12,7 +12,13 @@ namespace Horror.Controllers
 
         void FixedUpdate()
         {
-            physicsBody.Move(inputBrain.Movement * Time.fixedDeltaTime * speed);
+            Vector3 right = transform.right * inputBrain.Movement.x;
+            Vector3 up = transform.up * inputBrain.Movement.y;
+            Vector3 forward = transform.forward * inputBrain.Movement.z;
+
+            Vector3 movement = right + up + forward;
+
+            physicsBody.Move(movement * Time.fixedDeltaTime * speed);
         }
     }
 }

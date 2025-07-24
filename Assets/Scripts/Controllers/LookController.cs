@@ -7,6 +7,9 @@ namespace Horror.Controllers
     {
         [SerializeField] private InputBrain inputBrain;
         [SerializeField] private Transform head;
+        [SerializeField] private float maxVerticleAngle = 85f;
+
+        private float headRotation = 0f;
 
         void Update()
         {
@@ -14,7 +17,10 @@ namespace Horror.Controllers
                 transform.Rotate(Vector3.up, inputBrain.Look.x);
 
             if (inputBrain.Look.y != 0)
-                head.Rotate(Vector3.right, -inputBrain.Look.y);
+            {
+                headRotation = Mathf.Clamp(headRotation - inputBrain.Look.y, -maxVerticleAngle, maxVerticleAngle);
+                head.localEulerAngles = new Vector3(headRotation, head.localEulerAngles.y, head.localEulerAngles.z);
+            }
         }
     }
 }

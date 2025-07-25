@@ -13,12 +13,12 @@ namespace Horror.Controllers
 
         void Update()
         {
-            if (inputBrain.Look.x != 0)
-                transform.Rotate(Vector3.up, inputBrain.Look.x);
+            if (inputBrain.Input.Look.x != 0)
+                transform.Rotate(Vector3.up, inputBrain.Input.Look.x);
 
-            if (inputBrain.Look.y != 0)
+            if (inputBrain.Input.Look.y != 0)
             {
-                headRotation = Mathf.Clamp(headRotation - inputBrain.Look.y, -maxVerticleAngle, maxVerticleAngle);
+                headRotation = Mathf.Clamp(headRotation - inputBrain.Input.Look.y, -maxVerticleAngle, maxVerticleAngle);
                 head.localEulerAngles = new Vector3(headRotation, head.localEulerAngles.y, head.localEulerAngles.z);
             }
         }

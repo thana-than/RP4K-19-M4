@@ -12,7 +12,7 @@ namespace Horror.Controllers
 
         void FixedUpdate()
         {
-            if (inputBrain.JumpHeld)
+            if (inputBrain.Input.JumpHeld)
             {
                 AttemptJump();
             }

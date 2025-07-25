@@ -1,11 +1,24 @@
+using Unity.Netcode;
 using UnityEngine;
 
 namespace Horror.Inputs
 {
-    public abstract class InputBrain : MonoBehaviour
+    public abstract class InputBrain : NetworkBehaviour
     {
-        public abstract Vector3 Movement { get; }
-        public abstract Vector2 Look { get; }
-        public abstract bool JumpHeld { get; }
+        public bool AllowInput = true;
+
+        public InputValues Input => InputAllowed ? InternalInput : InputValues.Empty;
+        protected abstract InputValues InternalInput { get; }
+
+        public bool InputAllowed => AllowInput && IsOwner && IsSpawned;
+    }
+
+    public struct InputValues
+    {
+        public Vector3 Movement;
+        public Vector2 Look;
+        public bool JumpHeld;
+
+        public static readonly InputValues Empty = default(InputValues);
     }
 }

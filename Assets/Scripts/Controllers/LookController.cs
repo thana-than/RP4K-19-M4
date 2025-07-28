@@ -3,9 +3,8 @@ using Horror.Inputs;
 
 namespace Horror.Controllers
 {
-    public class LookController : MonoBehaviour
+    public class LookController : InputControllerBase
     {
-        [SerializeField] private InputBrain inputBrain;
         [SerializeField] private Transform head;
         [SerializeField] private float maxVerticleAngle = 85f;
 

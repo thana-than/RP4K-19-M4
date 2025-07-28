@@ -3,7 +3,7 @@ using Horror.Utilities;
 
 namespace Horror.Physics
 {
-    public class PhysicsBody : MonoBehaviour
+    public class PhysicsBody : NetworkAuthorizedBehaviour
     {
         //* GOALS:
         //? Gravity

@@ -13,6 +13,7 @@ namespace Horror.Inputs
         public bool InputAllowed => AllowInput && IsOwner && IsSpawned;
     }
 
+    [System.Serializable]
     public struct InputValues
     {
         public Vector3 Movement;

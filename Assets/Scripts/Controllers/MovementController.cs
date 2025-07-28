@@ -4,10 +4,9 @@ using Horror.Inputs;
 
 namespace Horror.Controllers
 {
-    public class MovementController : MonoBehaviour
+    public class MovementController : InputControllerBase
     {
         [SerializeField] private PhysicsBody physicsBody;
-        [SerializeField] private InputBrain inputBrain;
         [SerializeField] private float speed = 5f;
 
         void FixedUpdate()

@@ -4,10 +4,9 @@ using Horror.Inputs;
 
 namespace Horror.Controllers
 {
-    public class JumpController : MonoBehaviour
+    public class JumpController : InputControllerBase
     {
         [SerializeField] private PhysicsBody physicsBody;
-        [SerializeField] private InputBrain inputBrain;
         [SerializeField] private float jumpForce = 5f;
 
         void FixedUpdate()

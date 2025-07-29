@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.Netcode;
+using Horror.Utilities;
 
 namespace Horror
 {
@@ -7,16 +8,9 @@ namespace Horror
     {
         [SerializeField] MonoBehaviour[] components;
 
-        void Awake()
+        public override void OnNetworkSpawn()
         {
-            foreach (MonoBehaviour component in components)
-            {
-                component.enabled = enabled;
-            }
-        }
-        void Start()
-        {
-            bool enabled = IsSpawned && IsOwner;
+            bool enabled = this.CanControl();
             foreach (MonoBehaviour component in components)
             {
                 component.enabled = enabled;

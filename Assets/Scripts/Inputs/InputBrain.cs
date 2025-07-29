@@ -1,3 +1,4 @@
+using Horror.Utilities;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace Horror.Inputs
         public InputValues Input => InputAllowed ? InternalInput : InputValues.Empty;
         protected abstract InputValues InternalInput { get; }
 
-        public bool InputAllowed => AllowInput && IsOwner && IsSpawned;
+        public bool InputAllowed => AllowInput && this.CanControl();
     }
 
     [System.Serializable]

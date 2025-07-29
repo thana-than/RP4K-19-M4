@@ -2,7 +2,8 @@
     "name": "Horror",
     "rootNamespace": "Horror",
     "references": [
-        "GUID:1491147abca9d7d4bb7105af628b223e"
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:34a15b638e80a4c69a6d15b59ff294a6"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

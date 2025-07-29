@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3507728658737627722}
   - component: {fileID: 916787544635966076}
   - component: {fileID: 4850506204964531779}
-  - component: {fileID: 8893323502713542632}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -138,19 +137,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &8893323502713542632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4475655254742769248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22fdd6f3d1f3e6f4f801795e10c65c28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
 --- !u!1 &6477334949043232483
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,8 +325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2880ba358a6887b4ea848a7dcc7339cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicsBody: {fileID: 1079744231910836370}
   inputBrain: {fileID: 0}
+  physicsBody: {fileID: 1079744231910836370}
   speed: 5
 --- !u!114 &2786352602136581810
 MonoBehaviour:
@@ -395,8 +381,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3f85752747e2047a4fc9ac392c48f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicsBody: {fileID: 1079744231910836370}
   inputBrain: {fileID: 0}
+  physicsBody: {fileID: 1079744231910836370}
   jumpForce: 5
 --- !u!114 &5567683569684975145
 MonoBehaviour:

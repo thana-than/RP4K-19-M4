@@ -1,13 +1,16 @@
+using Horror.Utilities;
 using Unity.Netcode;
+using UnityEngine;
 
 namespace Horror
 {
     public class LocalObjectAuthority : NetworkBehaviour
     {
-        void Start()
+        [SerializeField] GameObject[] targets;
+        public override void OnNetworkSpawn()
         {
-            if (!IsSpawned || !IsOwner)
-                gameObject.SetActive(false);
+            foreach (var target in targets)
+                target.SetActive(this.CanControl());
         }
     }
 }

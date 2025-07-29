@@ -11,6 +11,7 @@ namespace Horror.Inputs
 
         void OnEnable()
         {
+            //TODO input allowed checks on network spawn?
             Cursor.lockState = CursorLockMode.Locked;
         }
 

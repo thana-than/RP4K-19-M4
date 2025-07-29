@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6404957975829663890}
   - component: {fileID: 7741820539710477020}
   - component: {fileID: 2284199911074196883}
-  - component: {fileID: 6903654097359260221}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -138,19 +137,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &6903654097359260221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3419956842789791083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22fdd6f3d1f3e6f4f801795e10c65c28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
 --- !u!1 &6477334949043232483
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3949180247102301492}
+  - component: {fileID: 2527185327356374596}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -183,6 +170,20 @@ Transform:
   - {fileID: 4420316583429120025}
   m_Father: {fileID: 1401616553508814433}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2527185327356374596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6477334949043232483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22fdd6f3d1f3e6f4f801795e10c65c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  targets: []
 --- !u!1 &7968109504555895308
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,6 +205,7 @@ GameObject:
   - component: {fileID: 5567683569684975145}
   - component: {fileID: 6597162831263895268}
   - component: {fileID: -817085992649634336}
+  - component: {fileID: 3527283626535980106}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -340,8 +342,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2880ba358a6887b4ea848a7dcc7339cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicsBody: {fileID: 1079744231910836370}
   inputBrain: {fileID: 6883411324428508226}
+  physicsBody: {fileID: 1079744231910836370}
   speed: 5
 --- !u!114 &2786352602136581810
 MonoBehaviour:
@@ -396,8 +398,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3f85752747e2047a4fc9ac392c48f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicsBody: {fileID: 1079744231910836370}
   inputBrain: {fileID: 6883411324428508226}
+  physicsBody: {fileID: 1079744231910836370}
   jumpForce: 5
 --- !u!114 &6883411324428508226
 MonoBehaviour:
@@ -488,3 +490,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
+--- !u!114 &3527283626535980106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7968109504555895308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22fdd6f3d1f3e6f4f801795e10c65c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  targets:
+  - {fileID: 3419956842789791083}

@@ -21,6 +21,9 @@ namespace Horror.Physics
 
         public void AddForce(Vector3 force, ForceMode mode = ForceMode.Force)
         {
+            if (!this.CanControl())
+                return;
+
             if (mode == ForceMode.Force || mode == ForceMode.Acceleration)
             {
                 force *= Time.fixedDeltaTime;
@@ -31,11 +34,17 @@ namespace Horror.Physics
 
         public void Move(Vector3 moveStep)
         {
+            if (!this.CanControl())
+                return;
+
             moveBuffer += moveStep;
         }
 
         void FixedUpdate()
         {
+            if (!this.CanControl())
+                return;
+
             velocity = ApplyGravity(velocity);
             velocity = ApplyForce(velocity);
             velocity = ApplyCollision(velocity);

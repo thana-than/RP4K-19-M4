@@ -2,47 +2,31 @@ using UnityEngine;
 
 namespace Horror.StateMachine
 {
-    public class StateMachine
+    public class StateMachine<T>
     {
-        State defaultState;
-        public State CurrentState { get; protected set; }
+        IState<T> defaultState;
+        public IState<T> CurrentState { get; protected set; }
 
-        public StateMachine(State defaultState)
+        public StateMachine(IState<T> defaultState)
         {
             this.defaultState = defaultState;
         }
 
-        public void Restart()
+        public void Restart(T payload)
         {
             CurrentState = defaultState;
-            CurrentState.EnterState();
+            CurrentState.EnterState(payload);
         }
 
-        public void Update()
+        public void Update(T payload)
         {
-            State nextState = CurrentState.Update();
+            IState<T> nextState = CurrentState.Update(payload);
             if (nextState != CurrentState)
             {
-                CurrentState.ExitState();
+                CurrentState.ExitState(payload);
                 CurrentState = nextState;
-                CurrentState.EnterState();
+                CurrentState.EnterState(payload);
             }
-        }
-    }
-
-    public class State
-    {
-        internal void EnterState()
-        {
-
-        }
-        internal State Update()
-        {
-            return this;
-        }
-        internal void ExitState()
-        {
-
         }
     }
 }

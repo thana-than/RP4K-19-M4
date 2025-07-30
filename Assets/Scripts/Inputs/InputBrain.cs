@@ -8,19 +8,19 @@ namespace Horror.Inputs
     {
         public bool AllowInput = true;
 
-        public InputValues Input => InputAllowed ? InternalInput : InputValues.Empty;
+        public InputValues Input => InputAllowed && InternalInput != null ? InternalInput : InputValues.Empty;
         protected abstract InputValues InternalInput { get; }
 
         public bool InputAllowed => AllowInput && this.CanControl();
     }
 
     [System.Serializable]
-    public struct InputValues
+    public class InputValues
     {
         public Vector3 Movement;
         public Vector2 Look;
         public bool JumpHeld;
 
-        public static readonly InputValues Empty = default(InputValues);
+        public static readonly InputValues Empty = new InputValues();
     }
 }

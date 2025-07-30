@@ -4,7 +4,7 @@ namespace Horror.Inputs
 {
     public class PlayerBrain : InputBrain
     {
-        private InputValues input;
+        private InputValues input = new InputValues();
         protected override InputValues InternalInput => input;
 
         [SerializeField] private float lookSensitivity = 1.0f;

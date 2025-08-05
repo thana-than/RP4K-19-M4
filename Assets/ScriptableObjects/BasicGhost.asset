@@ -14,3 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
     AggroRadius: 7
+    PatrolStopBuffer: 0.15
+    PlayerSearchInterval: 3
+    PlayerValidCheckInterval: 1
+    Searcher:
+      maxDistance: 1
+      searchType: 0

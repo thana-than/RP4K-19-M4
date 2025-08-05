@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.Netcode;
+using UnityEngine.AI;
 
 namespace Horror.Utilities
 {
@@ -36,6 +37,18 @@ namespace Horror.Utilities
             }
 
             return closestPlayer;
+        }
+
+        public static float CalculateDistance(this NavMeshPath path)
+        {
+            float distance = 0f;
+
+            for (int i = 0; i < path.corners.Length - 1; i++)
+            {
+                distance += Vector3.Distance(path.corners[i], path.corners[i + 1]);
+            }
+
+            return distance;
         }
     }
 }

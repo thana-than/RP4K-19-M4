@@ -18,5 +18,9 @@ MonoBehaviour:
     PlayerSearchInterval: 3
     PlayerValidCheckInterval: 1
     Searcher:
-      maxDistance: 1
-      searchType: 0
+      maxDistance: 10
+      sightline_minRadius: 0.5
+      sightline_maxRadius: 12.58
+      sightline_radials: 3
+      sightline_rays: 20
+      searchType: 2

@@ -6581,7 +6581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1135686356889694118, guid: 09102c8a507814c45ba16a1917f545e5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3175828753771604867, guid: 09102c8a507814c45ba16a1917f545e5, type: 3}
       propertyPath: inputBrain
@@ -14955,7 +14955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd76dfa0cb8b6894293862ff622f00f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkTimer: 30
+  checkTimer: 5
 --- !u!4 &1931946078
 Transform:
   m_ObjectHideFlags: 0

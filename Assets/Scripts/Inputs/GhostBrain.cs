@@ -22,9 +22,9 @@ namespace Horror.Inputs
         [SerializeField] Vector3 lookMultipliers = new Vector3(1f, .5f, 1f);
         [SerializeField] float lookMaxSpeed = 100f;
 
-        public void MoveTowardsAgentDestination()
+        public void MoveTowardsDirection(Vector3 direction)
         {
-            Vector3 dir = agent.desiredVelocity;//target.position - transform.position;
+            Vector3 dir = direction;//agent.desiredVelocity;//target.position - transform.position;
             Vector3 localDir = transform.InverseTransformDirection(dir);
 
             Vector3 moveDir = localDir;
@@ -39,10 +39,11 @@ namespace Horror.Inputs
             input.Look = lookDir;
         }
 
-        public void MoveTowards(Vector3 position)
+        public void MoveTowards(Vector3 position, bool useNavMesh = true)
         {
-            agent.destination = position;
-            MoveTowardsAgentDestination();
+            if (agent.enabled)
+                agent.destination = position;
+            MoveTowardsDirection(useNavMesh ? agent.desiredVelocity : position - transform.position);
         }
 
         void OnValidate()

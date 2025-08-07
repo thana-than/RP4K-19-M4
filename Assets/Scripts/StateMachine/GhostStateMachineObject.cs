@@ -15,6 +15,7 @@ namespace Horror.StateMachine
             public float PlayerSearchInterval = 3f;
             public float PlayerValidCheckInterval = 1f;
             public PlayerSearcher Searcher;
+            public bool UseNavMesh = true;
         }
 
         [SerializeField] Settings settings;
@@ -43,7 +44,7 @@ namespace Horror.StateMachine
                 }
                 timeSinceLastValidCheck += Time.deltaTime;
 
-                payload.Brain.MoveTowards(payload.Target.position);
+                payload.Brain.MoveTowards(payload.Target.position, settings.UseNavMesh);
 
                 return this;
             }
@@ -87,9 +88,10 @@ namespace Horror.StateMachine
                 int index = payload.PatrolDestinationIndex;
                 float stopBuffer = settings.PatrolStopBuffer;
 
-                payload.Brain.MoveTowards(patrolPoints[index]);
+                payload.Brain.MoveTowards(patrolPoints[index], settings.UseNavMesh);
 
-                if (payload.Agent.remainingDistance <= stopBuffer)
+                float distance = settings.UseNavMesh ? payload.Agent.remainingDistance : Vector3.Distance(payload.Transform.position, patrolPoints[index]);
+                if (distance <= stopBuffer)
                     payload.PatrolDestinationIndex = (index + 1) % patrolPoints.Length;
 
                 timeSinceLastSearch += Time.deltaTime;

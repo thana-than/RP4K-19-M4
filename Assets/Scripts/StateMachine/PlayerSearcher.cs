@@ -74,11 +74,19 @@ namespace Horror.StateMachine
                 return true;
             }
 
-            bool pathFound = agent.CalculatePath(target.position, workingPath);
-            if (!pathFound || workingPath.status != NavMeshPathStatus.PathComplete)
-                return false;
+            float distance;
 
-            float distance = workingPath.CalculateDistance();
+            if (agent.enabled)
+            {
+                bool pathFound = agent.CalculatePath(target.position, workingPath);
+                if (!pathFound || workingPath.status != NavMeshPathStatus.PathComplete)
+                    return false;
+
+                distance = workingPath.CalculateDistance();
+            }
+            else
+                distance = Vector3.Distance(agent.transform.position, target.position);
+
             if (distance > maxDistance)
                 return false;
 
